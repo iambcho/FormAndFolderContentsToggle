@@ -9,9 +9,7 @@ class FormEdit extends Component {
   constructor(props) {
     super()
 
-    this.state = {
-      clicks: this.props.clicks
-    };
+
 
   }
 
@@ -44,16 +42,70 @@ class FormEdit extends Component {
 
 }
 
+
+class Folder extends Component {
+  constructor(props) {
+    super()
+
+    this.state = {
+      show:true
+    }
+ 
+
+  }
+
+  ToggleClick = () => {
+    this.setState({ show: !this.state.show });
+  }
+
+  render() {
+
+    return (
+            
+          <div>
+            <h1>Home</h1>
+
+            {this.state.show ? 
+              <ul style={ulStyle}>
+                <li>File1</li>
+                <li>File2</li>
+                <li>File3</li>
+              </ul> 
+              : ''   
+              }
+
+            
+
+            <br/>
+
+            <button onClick={this.ToggleClick}>Toggle</button>
+            
+          </div>
+            
+ 
+    );
+
+  }
+
+}
+
 function App() {
   return (
     <div className="App">
       <br/>
       <FormEdit firstName="First Name: " lastName="Last Name:"/>
 
+      <Folder />
+
     </div>
   );
 }
 
+
+const ulStyle = {
+  margin: '0 auto',
+  width: '100px'
+}
 
 FormEdit.propTypes = {
   firstName: PropTypes.string.isRequired,
