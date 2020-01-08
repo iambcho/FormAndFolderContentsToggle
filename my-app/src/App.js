@@ -52,7 +52,6 @@ class FormEdit extends Component {
     }   
 }
 
-
 FormEdit.propTypes = {
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
@@ -64,6 +63,53 @@ FormEdit.defaultProps = {
     lastName: "Doe",
     currState: "default"
 };
+
+
+class Folder extends Component {
+  constructor(props) {
+    super()
+
+    this.state = {
+      show:true
+    }
+ 
+
+  }
+
+  ToggleClick = () => {
+    this.setState({ show: !this.state.show });
+  }
+
+  render() {
+
+    return (
+            
+          <div>
+            <h1>Home</h1>
+
+            {this.state.show ? 
+              <ul style={ulStyle}>
+                <li>File1</li>
+                <li>File2</li>
+                <li>File3</li>
+              </ul> 
+              : ''   
+              }
+
+            
+
+            <br/>
+
+            <button onClick={this.ToggleClick}>Toggle</button>
+            
+          </div>
+            
+ 
+    );
+
+  }
+
+}
 
 function App() {
     return (
