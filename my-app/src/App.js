@@ -113,11 +113,24 @@ class Folder extends Component {
 
 function App() {
     return (
-	    <div className="App">
+	    <div>
+
+	    <div className="App-header">
 	    <FormEdit firstName="Xing Tao" lastName="Shi" currState="default"/>
+	    </div>
+
+	    <div className="App-header">
+	    <Folder/>
+	    </div>
+
 	    </div>
 	    );
 }
 
+const ulStyle = {
+    margin: '0 auto',
+    width: '100px'
+}
 
 export default App;
+
