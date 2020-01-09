@@ -12,21 +12,29 @@ class FormEdit extends Component {
 	    currState: this.props.currState
 	};
 
-	this.onMouseDown1 = this.onMouseDown1.bind(this);
-	this.onMouseDown2 = this.onMouseDown2.bind(this);
-	this.onMouseDown3 = this.onMouseDown3.bind(this);
+	this.showEdit = this.showEdit.bind(this);
+	this.handleSubmit = this.handleSubmit.bind(this);
+	this.handleCancel = this.handleCancel.bind(this);
     }
     
-    onMouseDown1() {
+    showEdit() {
 	this.setState({currState: "editing"});
     }
 
-    onMouseDown2() {
-	this.setState({currState: "default", firstName: document.getElementById("newFirst").value, lastName:document.getElementById("newLast").value});
+    handleSubmit() {
+	this.setState({currState: "default"});
     }
 
-    onMouseDown3() {
+    handleCancel() {
 	this.setState({currState: "default"});
+    }
+
+    handleChangeFirstName = (event) => {
+      this.setState({firstName: event.target.value});
+    }
+
+    handleChangeLastName = (event) => {
+      this.setState({lastName: event.target.value});
     }
 
     render() {
@@ -35,17 +43,18 @@ class FormEdit extends Component {
 		    <div> 		    
 		    First Name: {this.state.firstName} <br/>
 		    Last Name: {this.state.lastName} <br/>
-		    <button onMouseDown={this.onMouseDown1}>Edit</button>
+		    <button onMouseDown={this.showEdit}>Edit</button>
 		    </div>
 		    );
 	}
 	else {
 	    return (
 		    <div>
-		    <input type="text" id="newFirst"/>
-		    <input type="text" id="newLast"/>
-		    <button onMouseDown={this.onMouseDown2}>Submit</button>
-		    <button onMouseDown={this.onMouseDown3}>Cancel</button>		    
+		    <input type="text" id="newFirst" onChange={this.handleChangeFirstName} value={this.state.firstName} />
+		    <input type="text" id="newLast" onChange={this.handleChangeLastName} value={this.state.lastName}/>
+
+		    <button onMouseDown={this.handleSubmit}>Submit</button>
+		    <button onMouseDown={this.handleCancel}>Cancel</button>		    
 		    </div>
 		    );
 	}
